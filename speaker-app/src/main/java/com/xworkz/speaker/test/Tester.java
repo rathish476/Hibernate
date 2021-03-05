@@ -9,8 +9,9 @@ public class Tester {
 	public static void main(String[] args) {
 		
      SpeakerDAO speakerDAO = new SpeakerDAOImpl();
+		ServiceDAO servicedao=new ServiceDAOImpl(resortdao);
      SpeakerDTO speakerDTO = new SpeakerDTO(04,"realme",1500,"black","small",true);
-	speakerDAO.save(speakerDTO);
+	servicedao.validateAndsave(speakerDTO);
 	}
 
 }
