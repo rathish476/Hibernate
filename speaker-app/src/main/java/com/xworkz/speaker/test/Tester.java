@@ -9,7 +9,7 @@ public class Tester {
 	public static void main(String[] args) {
 		
      SpeakerDAO speakerDAO = new SpeakerDAOImpl();
-		ServiceDAO servicedao=new ServiceDAOImpl(resortdao);
+		ServiceDAO servicedao=new ServiceDAOImpl(Speakerdao);
      SpeakerDTO speakerDTO = new SpeakerDTO(04,"realme",1500,"black","small",true);
 	servicedao.validateAndsave(speakerDTO);
 	}
