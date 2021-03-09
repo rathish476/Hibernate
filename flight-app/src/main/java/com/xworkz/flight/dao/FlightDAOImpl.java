@@ -16,8 +16,8 @@ public class FlightDAOImpl implements FlightDAO {
 		    Transaction transaction=session.beginTransaction();
 		    session.save(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException he) {
-			he.printStackTrace();
+		}catch (HibernateException e) {
+			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();
@@ -31,8 +31,8 @@ public class FlightDAOImpl implements FlightDAO {
 			session = new Configuration().configure().buildSessionFactory().openSession();
 		    FlightDTO flightDTO=session.get(FlightDTO.class, flightId);
 		    System.out.println(flightDTO);
-		}catch (HibernateException he) {
-			he.printStackTrace();
+		}catch (HibernateException e) {
+			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();
@@ -49,8 +49,8 @@ public class FlightDAOImpl implements FlightDAO {
 		    Transaction transaction=session.beginTransaction();
 		    session.update(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException he) {
-			he.printStackTrace();
+		}catch (HibernateException e) {
+			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();
@@ -66,8 +66,8 @@ public class FlightDAOImpl implements FlightDAO {
 		    Transaction transaction=session.beginTransaction();
 		    session.delete(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException he) {
-			he.printStackTrace();
+		}catch (HibernateException e) {
+			e.printStackTrace();
 		} finally {
 			if (session != null) {
 				session.close();
