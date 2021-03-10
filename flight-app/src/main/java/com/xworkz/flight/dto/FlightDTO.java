@@ -27,7 +27,7 @@ public class FlightDTO implements java.io.Serializable {
 	
 	public FlightDTO(){
 		
-	}
+}
 
 	
 	
