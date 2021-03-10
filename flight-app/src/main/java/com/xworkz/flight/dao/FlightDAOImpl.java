@@ -9,70 +9,121 @@ import com.xworkz.flight.dto.FlightDTO;
 
 public class FlightDAOImpl implements FlightDAO {
 
+	@Override
 	public void saveFlight(FlightDTO flightDTO) {
+		System.out.println("invoked saveFlight");
 		Session session = null;
+		Transaction transaction=null;
 		try{
-			session = new Configuration().configure().buildSessionFactory().openSession();
-		    Transaction transaction=session.beginTransaction();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session=sessionFactory.openSession();
+		    transaction=session.beginTransaction();
 		    session.save(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException e) {
-			e.printStackTrace();
+		}catch (HibernateException he) {
+			transaction.rollback();
+			he.printStackTrace();
 		} finally {
-			if (session != null) {
-				session.close();
+			try {
+				if (Objects.nonNull(session)) {
+					session.close();
+					System.out.println("session is closed");
+				}else {
+					System.out.println("session is not closed");
+				}
+				SingleFactory.closeFactory();
+			} catch (HibernateException he2) {
+				he2.printStackTrace();
 			}
 		}		
 	}
 
+	@Override
 	public void readFlight(int flightId) {
+		System.out.println("invoked readFlight");
 		Session session = null;
 		try{
-			session = new Configuration().configure().buildSessionFactory().openSession();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+		    session=sessionFactory.openSession();
 		    FlightDTO flightDTO=session.get(FlightDTO.class, flightId);
 		    System.out.println(flightDTO);
-		}catch (HibernateException e) {
-			e.printStackTrace();
-		} finally {
-			if (session != null) {
-				session.close();
+		}catch (HibernateException he) {
+			he.printStackTrace();
+		}  finally {
+			try {
+				if (Objects.nonNull(session)) {
+					session.close();
+					System.out.println("session is closed");
+				}else {
+					System.out.println("session is not closed");
+				}
+				SingleFactory.closeFactory();
+			} catch (HibernateException he2) {
+				he2.printStackTrace();
 			}
-		}		
+		}	
 	}
 
+	@Override
 	public void updateFlight(int flightId) {
+		System.out.println("invoked updateFlight");
 		Session session = null;
+		Transaction transaction=null;
 		try{
-			session = new Configuration().configure().buildSessionFactory().openSession();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session=sessionFactory.openSession();
 		    FlightDTO flightDTO=session.get(FlightDTO.class, flightId);
-		    flightDTO.setLocation("Bengaluru");
-		    Transaction transaction=session.beginTransaction();
+		    flightDTO.setSource("Bangalore");
+		    transaction=session.beginTransaction();
 		    session.update(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException e) {
-			e.printStackTrace();
+		}catch (HibernateException he) {
+			transaction.rollback();
+			he.printStackTrace();
 		} finally {
-			if (session != null) {
-				session.close();
+			try {
+				if (Objects.nonNull(session)) {
+					session.close();
+					System.out.println("session is closed");
+				}else {
+					System.out.println("session is not closed");
+				}
+				SingleFactory.closeFactory();
+			} catch (HibernateException he2) {
+				he2.printStackTrace();
 			}
 		}
 	}
 
+	@Override
 	public void deleteFlight(int flightId) {
+		System.out.println("invoked deleteFlight");
 		Session session = null;
+		Transaction transaction=null;
 		try{
-			session = new Configuration().configure().buildSessionFactory().openSession();
+			SessionFactory sessionFactory = SingleFactory.getSessionFactory();
+			session=sessionFactory.openSession();
 		    FlightDTO flightDTO=session.get(FlightDTO.class, flightId);
-		    Transaction transaction=session.beginTransaction();
+		    transaction=session.beginTransaction();
 		    session.delete(flightDTO);
 		    transaction.commit();
-		}catch (HibernateException e) {
-			e.printStackTrace();
+		}catch (HibernateException he) {
+			transaction.rollback();
+			he.printStackTrace();
 		} finally {
-			if (session != null) {
-				session.close();
-			}
+			   try {
+					if (Objects.nonNull(session)) {
+						session.close();
+						System.out.println("session is closed");
+					}else {
+						System.out.println("session is not closed");
+					}
+					SingleFactory.closeFactory();
+				} catch (HibernateException he2) {
+					he2.printStackTrace();
+				}
 		}
+		
 		
 	}
 
