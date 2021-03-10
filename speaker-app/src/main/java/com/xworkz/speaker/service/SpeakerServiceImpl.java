@@ -10,7 +10,7 @@ public class SpeakerServiceImpl implements SpeakerService {
 	public boolean validateAndSave(SpeakerDTO dto) {
 private SpeakerDAO dao;
 
-	public SpeakerServiceImpl(SpeakerDAO SpeakerDAO) {
+	public SpeakerServiceImpl(SpeakerDAO dao) {
 		this.SpeakerDAO = dao;
 	}
 
