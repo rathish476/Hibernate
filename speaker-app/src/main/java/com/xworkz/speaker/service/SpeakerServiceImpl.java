@@ -63,7 +63,7 @@ private SpeakerDAO dao;
 		}
 		if (validData) {
 			double warranty = mobileDTO.getwarrantyCapacity();
-			if (warranty > 0 && warranty <= 7000) {
+			if (warranty > 0 && warranty <= 1) {
 				System.out.println("warranty is valid");
 				validData = true;
 			} else {
