@@ -16,7 +16,7 @@ public static void main(String[] args) {
 		//flightDAO.updateFlight(1);
 		flightDAO.readFlight(2);
 		  //flightDAO.deleteFlight(4);
-	}
+	   }
 
 }
 
