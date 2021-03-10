@@ -4,6 +4,10 @@ import com.xworkz.speaker.dto.SpeakerDTO;
 
 public interface SpeakerService {
 	
-	boolean validateAndSave(SpeakerDTO dto);
-
+	public boolean validateAndSave(SpeakerDTO dto);
+        public boolean validateAndRead(SpeakerDTO dto);
+	
+	public boolean validateAndUpdate(SpeakerDTO dto);
+	
+	public boolean validateAndDelete(SpeakerDTO dto);
 }
