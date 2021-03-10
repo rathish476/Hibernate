@@ -62,12 +62,12 @@ private SpeakerDAO dao;
 			}
 		}
 		if (validData) {
-			double batteryCapacity = mobileDTO.getBatteryCapacity();
-			if (batteryCapacity > 0 && batteryCapacity <= 7000) {
-				System.out.println("batteryCapacity is valid");
+			double warranty = mobileDTO.getwarrantyCapacity();
+			if (warranty > 0 && warranty <= 7000) {
+				System.out.println("warranty is valid");
 				validData = true;
 			} else {
-				System.out.println("batteryCapacity is invalid");
+				System.out.println("warranty is invalid");
 				validData = false;
 			}
 
